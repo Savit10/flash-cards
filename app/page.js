@@ -2,8 +2,10 @@
 import { Button, Grid, AppBar, Toolbar } from "@mui/material";
 import {Typography, Box, Stack} from "@mui/material";
 import Head from "next/head";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+
 import getStripe from "../utils/getStripe.js";
+import Intro from "../components/Intro.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 export default function Home() {
 
@@ -38,39 +40,16 @@ export default function Home() {
   };
   
 
-  const handleClick = () => {
-    window.location.href = '/generate';
-  }
+  
   return (
     <div style={{ width: '100vw', maxWidth: '100%' }}>
       <Head>
         <title key="title">Flash Card SAAS</title>
         <meta name="description" content="A SAAS to help you create and manage flash cards." />
       </Head>
-      <AppBar position="static" width="100%">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Flash Card SAAS
-          </Typography>
-          <SignedIn>
-            <Button color="inherit" >Sign Out</Button>
-          </SignedIn>
-          <SignedOut>
-            <Button color="inherit" href="sign-in"  sx={{ marginRight: 2 }}> Sign In </Button>
-            <Button color="inherit" href="sign-up" > Sign Up  </Button>
-          </SignedOut>
-        </Toolbar>
-      </AppBar>
-      
+      <Navbar text={"Home"} />
       <Stack direction="column" spacing={6} >
-        <Box width="100vw" height="50vh" display = {'flex'} bgcolor="#F0F0F0" justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}>
-          <Typography variant = "h2"> Welcome to Flashcard SAAS</Typography>
-          <Typography variant = "h5"> 
-            {'  '}
-            Create and manage flashcards with ease
-          </Typography>
-          <Button variant="contained" color = 'primary' sx = {{marginTop: 2}} onClick={handleClick}> Get Started </Button>
-        </Box>
+        <Intro/>
         <Box display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={5} >
           <Typography variant="h3"> Features </Typography>
           <Grid container spacing={3}>

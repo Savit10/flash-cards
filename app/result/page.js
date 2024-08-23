@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import {useRouter} from "next/navigation"
 import getStripe from "../../utils/getStripe"
 import { useSearchParams  } from "next/navigation"
-import { CircularProgress, Container, Typography } from "@mui/material"
+import { CircularProgress, Container, Typography, Button } from "@mui/material"
 
 const ResultPage = () => {
     const router = useRouter()
@@ -18,7 +18,7 @@ const ResultPage = () => {
         const fetchCheckoutSession = async () => {
             if(!sessionId) return
             try {
-                const res = await fetch(`/api/checkout_session?session_id=${sessionId}`)
+                const res = await fetch(`/api/checkout_sessions?session_id=${sessionId}`)
                 const session = await res.json()
                 if (res.ok) {
                     setSession(session)
@@ -57,11 +57,11 @@ const ResultPage = () => {
     }
     return (
         <Container maxWidth ="100vw" sx = {{textAlign: 'center', mt: 4}}>
-            <CircularProgress />
             <Typography variant = "h4"  gutterBottom>
                 {session.payment_status === "paid" ? "Thank you for purchasing!" : "Payment Failed"}
             </Typography>
-            <Typography variant = "h3"> Session Id: {sessionId}</Typography>
+            <Typography variant = "h5"> Session Id: {sessionId}</Typography>
+            <Button onClick = {() => router.push('/')} variant = "contained" color = "primary">Return to Home</Button>
         </Container>
     )
 

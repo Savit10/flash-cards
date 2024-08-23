@@ -5,6 +5,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const formatAmountForStripe = amount => {
     return Math.round(amount * 100);
 }
+
+export async function GET(req) {
+    const searchParams = req.nextUrl.searchParams;
+    const sessionId = searchParams.get('sessionId');
+
+    try {
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      return NextResponse.json(session, {status: 200});
+    } catch (err) {
+      console.error("Error retrieving checkout session");
+      return NextResponse.json({error: {message: err.message}, status: 500}); 
+    }
+}
+
 export async function POST(req) {
     const params = {
         mode: 'subscription',

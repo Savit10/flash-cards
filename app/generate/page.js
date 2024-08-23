@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import db from '../../firebase';
 import { collection, writeBatch, doc, getDoc } from "firebase/firestore";
+import Navbar from "../../components/Navbar";
 
 export default function Generate() {
     const {isLoaded, isLoggedIn, user} = useUser();
@@ -74,13 +75,7 @@ export default function Generate() {
 
     return (
         <div>
-            <AppBar position="static" width="100%">
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Flash Card SAAS
-                    </Typography>
-                 </Toolbar>
-            </AppBar>
+            <Navbar text={"Generate Flashcards"}/>
             <Box display = {'flex'} flexDirection={'column'} alignItems = {'center'} justifyContent={'center'} gap={3} sx={{marginTop: 2}}>
                 <Typography variant="h3"> Generate Flash Cards </Typography>
                 <Paper sx={{padding: 2, width: '100%'}}>

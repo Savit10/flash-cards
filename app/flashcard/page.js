@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { collection, doc, getDocs} from "firebase/firestore";
 import db from "../../firebase";
 import { useSearchParams } from "next/navigation";
-import { AppBar, Toolbar, Typography, Box, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent} from "@mui/material";
+import { Typography, Box, Grid, Card, CardActionArea, CardContent} from "@mui/material";
 
 export default function Flashcard() {
     const {isLoaded, isSignedIn, user} = useUser();
@@ -44,13 +44,7 @@ export default function Flashcard() {
 
     return (
         <div>
-            <AppBar position="static" width="100%">
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Flash Card SAAS
-                    </Typography>
-                 </Toolbar>
-            </AppBar>
+            <Navbar text={"Flashcard:" + id}/>
             <Box display = {'flex'} flexDirection={'column'} alignItems = {'center'} justifyContent={'center'} gap={3} sx={{marginTop: 2}}>
                 {flashcards.length > 0 && 
                     <Grid container spacing={3}>
