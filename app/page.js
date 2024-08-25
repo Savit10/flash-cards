@@ -48,60 +48,60 @@ export default function Home() {
         <meta name="description" content="A SAAS to help you create and manage flash cards." />
       </Head>
       <Navbar text={"Home"} />
-      <Stack direction="column" spacing={6} >
-        <Intro/>
-        <Box display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={5} >
-          <Typography variant="h3"> Features </Typography>
+      <Stack direction="column" spacing={6}>
+        <Intro />
+        <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={5}>
+          <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#34495E' }}>Features</Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={4}>
-              <Box display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}>
-                <Typography variant="h5" gutterBottom> Upload Text </Typography>
-                <Typography variant="p"> Easy upload of textual content</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}>
-                <Typography variant="h5" gutterBottom> Create Flashcards </Typography>
-                <Typography variant="p"> Let our software do it's magic</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}>
-                <Typography variant="h5" gutterBottom> Study Effectively </Typography>
-                <Typography variant="p"> Use effective study methods to learn</Typography>
-              </Box>
-            </Grid>
+            {['Upload Text', 'Create Flashcards', 'Study Effectively'].map((feature, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={3} sx={{
+                  border: '2px solid',
+                  borderRadius: '8px',
+                  borderColor: '#2980B9',
+                  padding: 1,
+                  maxWidth: 300, 
+                  boxShadow: '0px 2px 4px rgba(100,100,100,0.1)',
+                  margin: 'auto' 
+                }}>
+                  <Typography variant="h5" gutterBottom sx={{ color: '#2980B9', fontWeight: 'bold' }}>{feature}</Typography>
+                  <Typography variant="body1" sx={{ color: '#555' }}>{{
+                    'Upload Text': 'Easy upload of textual content',
+                    'Create Flashcards': 'Let our software do its magic',
+                    'Study Effectively': 'Use effective study methods to learn'
+                  }[feature]}</Typography>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Box>
-        <Box bgcolor="#F0F0F0" display = {'flex'} justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={1}>
-          <Typography variant="h3" sx = {{marginTop: 2}}> Pricing </Typography>
-          <Grid container spacing={4} sx = {{marginBottom: 1, marginTop: 1}}>
-            <Grid item xs={12} md={6} sx = {{marginBottom: 1}}>
-              <Box display = {'flex'} justifyContent = {'center'} alignItems = {'center'} gap={3} flexDirection={'column'} sx = {{
-                border: '1px solid',
+        <Box bgcolor="#F8F9FA" display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={1}>
+          <Typography variant="h3" sx={{ marginTop: 2, fontWeight: 'bold', color: '#2C3E50' }}>Pricing</Typography>
+          <Grid container spacing={4} sx={{ paddingBottom: 2 }}>
+            <Grid item xs={12} md={6}>
+              <Box display={'flex'} justifyContent={'center'} alignItems={'center'} gap={3} flexDirection={'column'} sx={{
+                boxShadow: '0px 4px 8px rgba(0,0,0,0.12)',
                 borderRadius: 2,
-                padding: 2,
-                borderColor: 'primary.main',
-                marginLeft: 2
+                padding: 3,
+                background: '#FFFFFF'
               }}>
-                <Typography variant="h5"> Basic </Typography>
-                <Typography variant="h6"> $5/month</Typography>
-                <Typography variant="p"> Access to basic flashcard features and limited storage</Typography>
-                <Button variant="contained" color = 'primary' sx = {{marginTop: 2}}> Choose Basic </Button>
+                <Typography variant="h5" sx={{ color: '#27AE60', fontWeight: 'bold' }}>Basic</Typography>
+                <Typography variant="h6" sx={{ color: '#34495E' }}>$5/month</Typography>
+                <Typography variant="body1" sx={{ color: '#555' }}>Access to basic flashcard features and limited storage</Typography>
+                <Button variant="contained" color='primary' sx={{ marginTop: 2 }}>Choose Basic</Button>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} sx = {{marginBottom: 1}}>
-            <Box display = {'flex'} justifyContent = {'center'} alignItems = {'center'} gap={3} flexDirection={'column'} sx = {{
-                border: '1px solid',
+            <Grid item xs={12} md={6}>
+              <Box display={'flex'} justifyContent={'center'} alignItems={'center'} gap={3} flexDirection={'column'} sx={{
+                boxShadow: '0px 4px 8px rgba(0,0,0,0.12)',
                 borderRadius: 2,
-                padding: 2,
-                borderColor: 'primary.main',
-                marginRight: 2
+                padding: 3,
+                background: '#FFFFFF'
               }}>
-                <Typography variant="h5"> Pro </Typography>
-                <Typography variant="h6"> $10/month</Typography>
-                <Typography variant="p"> Unlimited flashcards and storage</Typography>
-                <Button variant="contained" color = 'primary' sx = {{marginTop: 2}} onClick={handleSubmit}> Choose Pro </Button>
+                <Typography variant="h5" sx={{ color: '#C0392B', fontWeight: 'bold' }}>Pro</Typography>
+                <Typography variant="h6" sx={{ color: '#34495E' }}>$10/month</Typography>
+                <Typography variant="body1" sx={{ color: '#555' }}>Unlimited flashcards and storage</Typography>
+                <Button variant="contained" color='primary' sx={{ marginTop: 2 }} onClick={handleSubmit}>Choose Pro</Button>
               </Box>
             </Grid>
           </Grid>
