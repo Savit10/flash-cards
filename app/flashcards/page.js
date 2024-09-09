@@ -5,7 +5,7 @@ import {collection, doc, getDoc, setDoc, writeBatch} from "firebase/firestore";
 import db from "../../firebase";
 import {useEffect, useState} from "react";
 import { useRouter } from 'next/navigation';
-import { Typography, Box, Grid, Card, CardActionArea, CardContent, Container,  } from "@mui/material";
+import { Typography, Box, Grid, Card, CardActionArea, CardContent, Container, CircularProgress,  } from "@mui/material";
 
 export default function Flashcards() {
     const {isSignedIn, isLoaded, user} = useUser();
@@ -41,7 +41,7 @@ export default function Flashcards() {
     return (
         <Container sx={{width: '100%', maxWidth: '100vw'}}>
             <Typography variant="h3" >Flashcards</Typography>
-            {flashcards.length > 0 && 
+            {flashcards.length > 0?
                     <Grid container spacing={3}>
                         {flashcards.map((flashcard, index) => (                  
                             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -55,7 +55,7 @@ export default function Flashcards() {
                             </Grid>
                         ))
                         }
-                    </Grid>
+                    </Grid>: setTimeout(() => <CircularProgress />, 2000) 
                 }
         </Container>
     )

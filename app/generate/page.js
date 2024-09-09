@@ -24,7 +24,9 @@ export default function Generate() {
             },
             body: text,
         })
-        .then(res => res.json())
+        .then(res => (
+            console.log(res),
+            res.json()))
         .then(data => setFlashcards(data.flashcards))
         .catch(err => console.log(err));
     }
@@ -145,7 +147,7 @@ export default function Generate() {
                 <DialogTitle> Save Flashcards </DialogTitle>
                 <DialogContent>
                     <DialogContentText> Enter the name of the collection </DialogContentText>
-                    <TextField autofocus margin="dense"value={name} type={text}onChange={(e) => setName(e.target.value)} label="Collection Name" fullWidth variant="outlined"/>
+                    <TextField autoFocus margin="dense"value={name} type={text}onChange={(e) => setName(e.target.value)} label="Collection Name" fullWidth variant="outlined"/>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}> Cancel </Button>

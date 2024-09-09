@@ -9,10 +9,16 @@ export default function Intro() {
     return (
         <Box width="100vw" display = {'flex'} bgcolor="#F0F0F0" justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}
         sx ={{
-            marginTop: 5,
-            padding: 5,
+            padding: 10,
             borderRadius: 2,
-            boxShadow: 4,
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transitionDuration: '0.3s',
+            },
+            '&:not(:hover)': {
+              transform: 'scale(1)',
+              transitionDuration: '0.3s',
+            }
         }}>
           <Typography variant = "h2"> Welcome to Flashcard SAAS</Typography>
           <Typography variant = "h5"> 
