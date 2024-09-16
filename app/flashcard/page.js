@@ -1,5 +1,5 @@
 "use client"
-
+import Navbar from "../components/Navbar";
 import { useUser } from "@clerk/clerk-react";
 import { useState, useEffect } from "react";
 import { collection, doc, getDocs} from "firebase/firestore";
