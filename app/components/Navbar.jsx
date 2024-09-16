@@ -13,8 +13,8 @@ export default function Navbar(props) {
                 <Button color="inherit" >Sign Out</Button>
             </SignedIn>
             <SignedOut>
-                <Button color="inherit" href="sign-in"  sx={{ marginRight: 2 }}> Sign In </Button>
-                <Button color="inherit" href="sign-up" > Sign Up  </Button>
+                <Button color="inherit" href="/sign-in"  sx={{ marginRight: 2 }}> Sign In </Button>
+                <Button color="inherit" href="/sign-up" > Sign Up  </Button>
             </SignedOut>
             </Toolbar>
         </AppBar>

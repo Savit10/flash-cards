@@ -9,7 +9,7 @@ export default function Intro() {
     return (
         <Box width="100vw" display = {'flex'} bgcolor="#F0F0F0" justifyContent = {'center'} flexDirection={'column'} alignItems = {'center'} gap={3}
         sx ={{
-            padding: 10,
+            padding: 5,
             borderRadius: 2,
             '&:hover': {
               transform: 'scale(1.05)',
@@ -25,7 +25,7 @@ export default function Intro() {
             {'  '}
             Create and manage flashcards with ease
           </Typography>
-          <Button variant="contained" color = 'primary' sx = {{marginTop: 2}} onClick={handleClick}> Get Started </Button>
+          <Button variant="contained" color = 'primary' onClick={handleClick}> Get Started </Button>
         </Box>
     );
 }

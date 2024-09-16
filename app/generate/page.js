@@ -1,22 +1,27 @@
 'use client'
-import { AppBar, Toolbar, Typography, Box, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, CircularProgress } from "@mui/material";
 import { useUser } from "@clerk/clerk-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 import db from '../../firebase';
 import { collection, writeBatch, doc, getDoc } from "firebase/firestore";
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
+
 
 export default function Generate() {
     const {isLoaded, isLoggedIn, user} = useUser();
     const [flashcards, setFlashcards] = useState([]);
     const [flipped, setFlipped] = useState([]);
+    const [clicked, setClicked] = useState(false);
     const [text, setText] = useState('');
     const [name, setName] = useState('');
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
+
     const handleSubmit = async (e) => {
+        e.preventDefault();
+        setClicked(true);
         fetch('/api/generate', {
             method: 'POST',
             headers: {
@@ -85,7 +90,8 @@ export default function Generate() {
                     fullWidth multiline rows={4} variant = 'outlined' sx = {{mb: 2}}/>
                     <Button fullWidth variant="contained" color="primary" onClick={handleSubmit}>Generate</Button>
                 </Paper>
-                {flashcards.length > 0 && 
+                {clicked && flashcards.length === 0? <CircularProgress/>
+                : 
                     <Grid container spacing={3}>
                         {flashcards.map((flashcard, index) => (                  
                             <Grid item xs={12} sm={6} md={4} key={index}>

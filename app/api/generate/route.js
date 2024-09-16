@@ -14,7 +14,8 @@ learn and retain information efficiently. Each flash card should focus on a sing
         "back": string;
     }]
  }
-There should be no other properties/string values in the return message completion, just the JSON object.
+There should be no other properties/string values in the return message completion, just the JSON object. There should be no extra aspects
+of the completion such as punctuation, characters or anything like that, only a JSON object!
  `;
 const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",

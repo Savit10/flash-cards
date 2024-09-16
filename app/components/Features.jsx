@@ -3,7 +3,7 @@ import { Box, Typography, Grid } from '@mui/material';
 
 export default function Features() {
     return (
-        <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={5}>
+        <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={3}>
         <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#34495E' }}>Features</Typography>
         <Grid container spacing={3}>
           {['Upload Text', 'Create Flashcards', 'Study Effectively'].map((feature, index) => (

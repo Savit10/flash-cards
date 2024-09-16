@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from 'react';
-import getStripe from "../utils/getStripe.js";
+import getStripe from "../../utils/getStripe.js";
 
 const handleSubmit = async () => {
     try {
@@ -33,35 +33,56 @@ const handleSubmit = async () => {
   };
 
 export default function Pricing() {
-    
     return (
       <Box bgcolor="#F8F9FA" display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} gap={1}>
-      <Typography variant="h3" sx={{ marginTop: 2, fontWeight: 'bold', color: '#2C3E50' }}>Pricing</Typography>
-      <Grid container spacing={4} sx={{ paddingBottom: 2 }}>
-        <Grid item xs={12} md={6}>
+      <Typography variant="h3" sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Pricing</Typography>
+      <Grid container spacing={4} sx={{ paddingLeft: 4 }}>
+        <Grid item xs={12} md={6} sx ={{
+            padding: 2,
+            borderRadius: 2,
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transitionDuration: '0.3s',
+            },
+            '&:not(:hover)': {
+              transform: 'scale(1)',
+              transitionDuration: '0.3s',
+            }
+        }}>
           <Box display={'flex'} justifyContent={'center'} alignItems={'center'} gap={3} flexDirection={'column'} sx={{
             boxShadow: '0px 4px 8px rgba(0,0,0,0.12)',
             borderRadius: 2,
-            padding: 3,
+            padding: 2,
             background: '#FFFFFF'
           }}>
             <Typography variant="h5" sx={{ color: '#27AE60', fontWeight: 'bold' }}>Basic</Typography>
             <Typography variant="h6" sx={{ color: '#34495E' }}>$5/month</Typography>
             <Typography variant="body1" sx={{ color: '#555' }}>Access to basic flashcard features and limited storage</Typography>
-            <Button variant="contained" color='primary' sx={{ marginTop: 2 }}>Choose Basic</Button>
+            <Button variant="contained" color='primary' >Choose Basic</Button>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} sx ={{
+            padding: 2,
+            borderRadius: 2,
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transitionDuration: '0.3s',
+            },
+            '&:not(:hover)': {
+              transform: 'scale(1)',
+              transitionDuration: '0.3s',
+            }
+        }}>
           <Box display={'flex'} justifyContent={'center'} alignItems={'center'} gap={3} flexDirection={'column'} sx={{
             boxShadow: '0px 4px 8px rgba(0,0,0,0.12)',
             borderRadius: 2,
-            padding: 3,
+            padding: 2,
             background: '#FFFFFF'
           }}>
             <Typography variant="h5" sx={{ color: '#C0392B', fontWeight: 'bold' }}>Pro</Typography>
             <Typography variant="h6" sx={{ color: '#34495E' }}>$10/month</Typography>
             <Typography variant="body1" sx={{ color: '#555' }}>Unlimited flashcards and storage</Typography>
-            <Button variant="contained" color='primary' sx={{ marginTop: 2 }} onClick={handleSubmit}>Choose Pro</Button>
+            <Button variant="contained" color='primary' onClick={handleSubmit}>Choose Pro</Button>
           </Box>
         </Grid>
       </Grid>

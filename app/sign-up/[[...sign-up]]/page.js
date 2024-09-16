@@ -1,8 +1,6 @@
 import { SignUp } from "@clerk/nextjs";
 import { Typography, Box} from "@mui/material";
-import { AppBar, Toolbar, Button } from '@mui/material';
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import Navbar from "../../components/Navbar";
+import Navbar from "@/app/components/Navbar";
 
 
 export default function SignUpPage() {
